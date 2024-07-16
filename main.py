@@ -952,7 +952,7 @@ class IMCpy(ImcLib):
         cardsNum = ctypes.c_int32(0)
         try:
             ret = self.get_cards_num(ctypes.byref(cardsNum))
-            if not ret & 0xFFFF == EXE_SUCCESS:
+            if not ret & 0xFFFF == EXE_SUCCESS:  # todo: why warning here
                 raise ValueError(f"GetCardsNum failed, ret:{ret}")
             val = cardsNum.value
             if val > 4 or val < 1:
